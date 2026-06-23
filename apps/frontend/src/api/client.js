@@ -1,21 +1,7 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/authStore'
 
-function resolveApiBaseUrl() {
-  const configuredUrl = import.meta.env.VITE_API_URL || ''
-
-  if (configuredUrl) {
-    return configuredUrl.replace(/\/$/, '')
-  }
-
-  if (import.meta.env.PROD && window.location.hostname === 'fox.dev.nfptech.com.br') {
-    return 'https://fox.dev.api.nfptech.com.br'
-  }
-
-  return ''
-}
-
-const apiBaseUrl = resolveApiBaseUrl()
+const apiBaseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
 
 if (import.meta.env.DEV) {
   console.info(`API URL carregada: ${apiBaseUrl || 'same-origin'}`)
