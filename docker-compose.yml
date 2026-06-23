@@ -1,13 +1,9 @@
 services:
   backend:
+    container_name: fox-backend
     build:
       context: ./apps/backend
       dockerfile: Dockerfile
-    environment:
-      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:sqlserver://sqlserver.dev.nfptech.com.br:1433;databaseName=fox;encrypt=true;trustServerCertificate=true}
-      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME:-sa}
-      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD:?SPRING_DATASOURCE_PASSWORD is required}
-      JWT_SECRET: ${JWT_SECRET:-fox-dev-secret-key-local-2026-with-strong-256-bit-minimum-secret}
     restart: unless-stopped
     networks:
       - app-network
