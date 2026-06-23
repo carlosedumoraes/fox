@@ -5,7 +5,9 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     networks:
-      - app-network
+      app-network:
+        aliases:
+          - fox-backend
 
   frontend:
     build:
