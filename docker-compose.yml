@@ -3,6 +3,16 @@ services:
     build:
       context: ./apps/backend
       dockerfile: Dockerfile
+    environment:
+      SERVER_PORT: ${SERVER_PORT:-8080}
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL:-jdbc:sqlserver://sqlserver.dev.nfptech.com.br:1433;databaseName=fox;encrypt=true;trustServerCertificate=true}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME:-sa}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+      JWT_SECRET: ${JWT_SECRET:-fox-dev-secret-key-local-2026-with-strong-256-bit-minimum-secret}
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-900000}
+      REFRESH_TOKEN_EXPIRATION: ${REFRESH_TOKEN_EXPIRATION:-604800000}
+      PASSWORD_RESET_TOKEN_EXPIRATION: ${PASSWORD_RESET_TOKEN_EXPIRATION:-900000}
+      APP_CORS_ALLOWED_ORIGINS: ${APP_CORS_ALLOWED_ORIGINS:-http://localhost:5173,http://localhost:5174,http://127.0.0.1:5173,http://127.0.0.1:5174,https://fox.dev.nfptech.com.br}
     restart: unless-stopped
     networks:
       - app-network
