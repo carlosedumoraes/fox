@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { useAuthStore } from '../store/authStore'
 
-const apiBaseUrl = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+const apiBaseUrl = (import.meta.env.DEV ? import.meta.env.VITE_API_URL || '' : '').replace(/\/$/, '')
 
 if (import.meta.env.DEV) {
   console.info(`API URL carregada: ${apiBaseUrl || 'same-origin'}`)
