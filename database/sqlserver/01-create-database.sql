@@ -1,0 +1,5 @@
+IF DB_ID(N'fox') IS NULL
+BEGIN
+    CREATE DATABASE [fox];
+END
+GO
