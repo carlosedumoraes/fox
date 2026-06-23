@@ -1,6 +1,5 @@
 services:
   backend:
-    container_name: fox-backend
     build:
       context: ./apps/backend
       dockerfile: Dockerfile
